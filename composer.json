@@ -1,0 +1,28 @@
+{
+    "name": "hpd/captcha",
+    "description": "Laravel Captcha Code Package",
+    "homepage": "https://github.com/hamid-hpd/captcha.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hamid HpD",
+            "homepage": "https://github.com/hamid-hpd",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Hpd\\Captcha\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hpd\\Captcha\\CaptchaServiceProvider"
+            ]
+        }
+    }
+}
