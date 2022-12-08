@@ -38,6 +38,7 @@ Then customize configuration properties as you like.
 ```$ php artisan vendor:publish config/config.php```
 ```php
 return [
+    'disable' => env('CAPTCHA_DISABLE', !str_contains(env('APP_ENV', 'local'), 'prod')),
     'characters'=>[
         'lowercase'=>'abxefghijklymcnopsqrtuvd',
         'uppercase'=>'AXOBEPFCYDGWSJKZHIRULMNQTV',
