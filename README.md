@@ -5,7 +5,7 @@
 ## Preview
 ![preview](samples.png)
 
-- [Captcha for Laravel 8/9](#captcha-for-laravel-8-9)
+- [Captcha for Laravel 8/9](#captcha-for-laravel-8-9-10)
   * [Preview](#preview)
   * [Installation](#installation)
   * [Usage](#usage)
