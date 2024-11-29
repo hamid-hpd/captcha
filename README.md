@@ -106,12 +106,12 @@ You can use the following helper functions in your project to get a Captcha imag
 ### Example
 To get the Captcha image source:
 ```html
-    <img src="{{!! captcha_get_src()!!}}" titile="Captcha" alt="Captcha">
+    <img src="{!! captcha_get_src()!!}" titile="Captcha" alt="Captcha">
 ```
 To get the image HTML element:
 ```html
     <div>
-        {{!! captcha_get_html()!!}}
+        {!! captcha_get_html()!!}
     </div>
 ```
 
