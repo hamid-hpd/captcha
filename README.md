@@ -2,7 +2,7 @@
 
 
 ## Preview
-![preview](samples.png)
+![preview](./assets/images/samples.png)
 
 - [Captcha for Laravel 8/9/10/11/12](#captcha-for-laravel)
   * [Preview](#preview)
