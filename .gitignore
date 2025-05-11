@@ -1,0 +1,18 @@
+# PHPUnit
+.phpunit.result.cache
+
+# Composer
+/vendor/
+composer.lock
+
+# Logs and temp files
+*.log
+*.cache
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db

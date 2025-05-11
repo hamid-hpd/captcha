@@ -1,0 +1,12 @@
+# Ignore test files and folders in export
+/tests export-ignore
+
+# Ignore PHPUnit config in export
+phpunit.xml export-ignore
+
+# Ignore git config files in export
+/.gitattributes export-ignore
+/.gitignore export-ignore
+
+# (اختیاری) Ignore CI configs in export
+/.github/ export-ignore
