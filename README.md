@@ -1,11 +1,10 @@
 # Captcha for Laravel 
 
 
-
 ## Preview
 ![preview](samples.png)
 
-- [Captcha for Laravel 8/9/10/11](#captcha-for-laravel-8-9-10-10-11)
+- [Captcha for Laravel 8/9/10/11/12](#captcha-for-laravel)
   * [Preview](#preview)
   * [Installation](#installation)
   * [Usage](#usage)
@@ -17,7 +16,9 @@
   * [Validation](#validation)
      + [Session Mode: ](#session-mode)
      + [Stateless Mode:](#stateless-mode)
-  
+  * [License](#license)   
+ - [Donate](#donate)
+ - [Other Proiects](#check-out-my-other-projects) 
 ## Installation
 
 
@@ -157,6 +158,27 @@ Set the config type to match the one previously selected:
         // continue
     }
 ```
+## License
 
-        
- 
+This project is licensed under the [Proprietary License](./LICENSE).
+
+## Donate
+
+If you like this project and want to support it, feel free to send USDT donations to the addresses below. Thank you! 🙏
+
+![Tether](https://img.shields.io/badge/Tether-blue?logo=tether&logoColor=white)
+| Network | Address |
+|---------|---------|
+| ![Tether ERC20](https://img.shields.io/badge/USDT-ERC20-green?logo=tether) | `0x2bFcEcCF2f25d48CbdC05a9d55A46262a0A6E542` | 
+| ![Tether TRC20](https://img.shields.io/badge/USTD-TRC20-red?logo=tether)    | `TEHzXzg4nMp7MW5pVH6fGmuq7JBaFovMW3` | 
+
+Your support allows me to continue maintaining and improving this project. Thank you so much for your contribution! 🙏
+
+## Check Out My Other Projects
+
+Hey! If you liked this package, you might enjoy some of my other work too:
+
+- [Validatify](https://github.com/hamid-hpd/validatify.git) – A PHP input validation library.
+- [jQuery Confirmation Dialog](https://github.com/hamid-hpd/jquery-confirm-dialog.git) – Customizable jQuery Confirmation Dialog Plugin with RTL and Theming Support
+
+I'm always building and sharing new stuff — feel free to take a look, star ⭐ what you like, or even open a PR!

@@ -2,15 +2,17 @@
     "name": "hpd/captcha",
     "description": "Laravel Captcha Code Package",
     "homepage": "https://github.com/hamid-hpd/captcha.git",
-    "license": "MIT",
+	"license": "proprietary",
     "authors": [
         {
             "name": "Hamid HpD",
             "homepage": "https://github.com/hamid-hpd",
-            "role": "Developer"
+            "role": "Developer",
+			"email" : "hpd.hamid@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+
+    "minimum-stability": "stable",
     "require": {
     },
     "autoload": {
