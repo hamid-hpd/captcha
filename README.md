@@ -102,7 +102,7 @@ You can use the following helper functions in your project to get a Captcha imag
     
     captcha_get_src('easy')// returns image source(URl)
 
-    captcha_get_html('dark')// returns img html element
+    captcha_get_img('dark')// returns img html element
 ```
 ### Example
 To get the Captcha image source:
@@ -112,7 +112,7 @@ To get the Captcha image source:
 To get the image HTML element:
 ```html
     <div>
-        {!! captcha_get_html() !!}
+        {!! captcha_get_img() !!}
     </div>
 ```
 
