@@ -92,7 +92,7 @@ You can use the following helper functions in your project to get a Captcha imag
     
     captcha_get_src()// returns image source(URl)
 
-    captcha_get_html()// returns img html element
+    captcha_get_img()// returns img html element
 ```
 ### Use desired configuration
 ```php
