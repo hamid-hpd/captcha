@@ -10,13 +10,16 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "ext-gd": "*"
     },
     "autoload": {
         "psr-4": {
             "Hpd\\Captcha\\": "src/"
-        },        
+        },
         "files": [
             "src/helper.php"
         ]

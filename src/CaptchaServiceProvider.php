@@ -6,53 +6,49 @@ use Illuminate\Support\Facades\Validator;
 
 class CaptchaServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
     public function register()
     {
-        /* Include helpers */
-        $file = __DIR__.'/helper.php';
-        if (file_exists($file)) {
+        $file = realpath(__DIR__.'/helper.php');
+        if ($file && file_exists($file)) {
             require_once($file);
         }
-        /* Merge configurations */
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'config');
+        
+        $this->mergeConfigFrom(
+            realpath(__DIR__.'/../config/config.php'),
+            'captcha'
+        );
 
-        /* Bind captch */
-        $this->app->bind('captcha',function($app){
+        $this->app->singleton('captcha', function($app) {
             return new Captcha(
                 $app['Illuminate\Contracts\Config\Repository'],
                 $app['Illuminate\Support\Str'],
                 $app['Illuminate\Session\Store']
             );
         });
-
     }
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
+
     public function boot()
     {
-        /* Publish configuration file */
         $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('config.php'),
-        ]);
+            realpath(__DIR__.'/../config/config.php') => config_path('captcha.php'),
+        ], 'captcha-config');
 
-        /* Routing */
-        $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+        $this->loadRoutesFrom(realpath(__DIR__ . '/../routes/routes.php'));
 
-        /* Extend validator class*/
-       Validator::extend('captcha',function($attribute,$value,$parameters,$validator)
-       {
-           return captcha_check($value);
-       });
-       Validator::extend('captcha_api',function ($attribute,$value,$parameters,$validator){
-           return captcha_check_api($value,$parameters[0],$parameters[1] ?? 'default');
-       });
+        Validator::extend('captcha', function($attribute, $value, $parameters, $validator) {
+            if ($value === null || $value === false || $value === "" || strlen($value) > 100) {
+                return false;
+            }
+            $result = captcha_check($value);
+            return $result;
+        }, 'The :attribute field is not a valid CAPTCHA code.');
+
+        Validator::extend('captcha_api', function($attribute, $value, $parameters, $validator) {
+            if ($value === null || $value === false || $value === ""|| empty($parameters[0]) || strlen($value) > 100 || strlen($parameters[0]) !== 64) {
+                return false;
+            }
+            $result = captcha_check_api($value, $parameters[0]);
+            return $result;
+        }, 'The :attribute field is not a valid CAPTCHA code.');
     }
 }
