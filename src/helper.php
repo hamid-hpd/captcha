@@ -19,8 +19,8 @@ if (!function_exists('captcha_get_src')) {
     }
 }
 
-if (!function_exists('captcha_get_html')) {
-    function captcha_get_html(string $config = 'default', array $attribs = []): string
+if (!function_exists('captcha_get_img')) {
+    function captcha_get_img(string $config = 'default', array $attribs = []): string
     {
         if (!preg_match('/^[a-zA-Z0-9_-]+$/', $config)) {
             throw new \InvalidArgumentException('Invalid CAPTCHA configuration');

@@ -17,8 +17,8 @@ class Captcha
     protected int $alpha = 0; // 0 -> 1
     protected bool $noise = false;
     protected string $noiseMode = 'cross';//'vertical','horizontal','cross','random'
-    protected float $noiseDensity = 0.1; // 0 -> 1.0
-    protected float $noiseIntensity = 1.0; // 0 -> 1.0
+    protected float $noiseDensity = 0.1;// 0 -> 1.0
+    protected float $noiseIntensity = 1.0;// 0 -> 1.0
     protected bool $noiseLines = false;
     protected bool $difficulty = false;
     protected int $length = 5;

@@ -42,8 +42,7 @@ return [
         'noise' => true,
         'noiseColor' => '#c5c5c5',
         'noiseMode' => 'vertical',
-        'blur' =>true,
-        
+        'blur' =>true,   
     ],
     'dark' => [
         'bgColor' => '#000000',
@@ -74,7 +73,6 @@ return [
         'noiseIntensity' => 1.0,
         'blur' => true,
         'alpha' => 15
-
     ],
     'lower' => [
         'uppercase' => false,
@@ -88,8 +86,7 @@ return [
         'noiseDensity' => 0.2,
         'noiseIntensity' => 1.0,
         'blur' => true,
-        'alpha' => 15
-        
+        'alpha' => 15   
     ],
     'math' => [
         'type' => 'math', 

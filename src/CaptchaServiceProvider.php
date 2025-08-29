@@ -12,7 +12,7 @@ class CaptchaServiceProvider extends ServiceProvider
         if ($file && file_exists($file)) {
             require_once($file);
         }
-        
+          
         $this->mergeConfigFrom(
             realpath(__DIR__.'/../config/config.php'),
             'captcha'

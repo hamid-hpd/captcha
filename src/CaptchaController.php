@@ -11,7 +11,6 @@ class CaptchaController extends Controller
         if (!preg_match('/^[a-zA-Z0-9_-]+$/', $config)) {
             abort(400, 'Invalid CAPTCHA configuration');
         }
-
         return $captcha->create($config);
     }
 
@@ -21,7 +20,6 @@ class CaptchaController extends Controller
         if (!preg_match('/^[a-zA-Z0-9_-]+$/', $config)) {
             abort(400, 'Invalid CAPTCHA configuration');
         }
-
         return $captcha->create($config, true);
     }
 }
