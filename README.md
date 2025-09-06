@@ -152,15 +152,15 @@ The captcha solution is stored in the server-side session and validated against 
 
 You can use the following helper functions in your project to get a Captcha image.
 ```php
-    captcha(); // returns image
+    captcha()// returns image
     
     captcha_get_src()// returns image source(URl)
 
-    captcha_get_html()// returns img html element
+    captcha_get_img()// returns img html element
 ```
 Pass the configuration name to the function. If omitted, the 'default' configuration is
 ```php
-    captcha('default'); // returns image
+    captcha('default')// returns image
     
     captcha_get_src('easy')// returns image source(URl)
 
@@ -170,11 +170,11 @@ Pass the configuration name to the function. If omitted, the 'default' configura
 
 Get Captcha image src:
 ```php
-    <img src="{{!! captcha_get_src()!!}}" titile="Captcha" alt="Captcha">
+    <img src="{{captcha_get_src()}}" title="Captcha" alt="Captcha">
 ```
 Get img element:
 ```php
-    <div> {{!! captcha_get_img()!!}}</div>
+    <div> {!!captcha_get_img()!!}</div>
 ```
 Validation
 
