@@ -1,13 +1,18 @@
-# Captcha for Laravel 
+# Captcha for Laravel
 
+_A Lightweight CAPTCHA Solution for Laravel_
 
+**By** _HPD Code Solutions_
+
+![Logo](./docs/images/logo.png)
 
 ## Preview
-![preview](samples.png)
+![Preview](./docs/images/preview.png)
 
 ## Table of Contents
 - [What's New](#whats-new)
-  - [Version 2.0.0](#whats-new)
+  - [Version 3.0.0](#version-300)
+  - [Version 2.0.0](#version-200)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
@@ -18,12 +23,50 @@
   - [API mode](#api-mode)
     - [Example](#example-1)
 - [License](#license)   
-- [Donate](#donate)
 - [Other Proiects](#check-out-my-other-projects) 
 
 ## What's New
-** version 2.0.0 
-- **Added `math` configuration option**  
+
+### Version 3.0.0 
+
+- **Added `word_puzzle` type configuration option**
+
+    Now you can generate captcha challenges using incomplete English words from a dictionary. Users see a word with missing letters (e.g., ap_le) and must type the complete word (apple).
+    ```php
+    <div> {!!captcha_get_img('word_puzzle_default')!!}</div>
+    ```
+- **From now on, the `color` property in all types supports the `multi` option.**
+
+- **⚠️ Updated Routes with `hpd` Prefix**
+
+     All captcha routes have been updated to include a hpd prefix for better organization and avoiding naming conflicts with other CAPTCHA packages.
+     - Web routes now use:
+        ```arduino
+        hpd/captcha/{config?}
+        ```
+     - API routes now use:
+        ```php
+        hpd/captcha/api/{config?}
+        ```   
+
+- **All published config files use the `hpd_` prefix to:**
+    - **Avoid conflicts** with other CAPTCHA packages
+    - **Unique identification** for HPD Captcha package
+    - **Easy management** in projects with multiple packages
+
+    | Package File |    Published As   |      Purpose     |
+    |--------------|-------------------|------------------|
+    | `config.php` | `hpd_captcha.php` | Main CAPTCHA settings & themes |
+    
+ - **All data files, such as the words file, will be placed in the address `storage\hpd\captcha\words_en.php` after publishing.**
+
+- **Smart detection of published vs. package config and data files with seamless fallback.**
+
+- **Refactored package directories structure** 
+
+### version 2.0.0 
+
+- **Added `math` type configuration option**  
   Now you can generate captcha challenges using simple math operations (e.g., `3 + 5 = ?`).  
 
 - **Updated configuration options**  
@@ -41,7 +84,7 @@ The `addNoise` method accepts two required arguments (`width` and `height`) and 
 
 ### Parameters
 
-| Option       | Type             | Default (if not provided)          | Description |
+| Option       | Type             | Default (if not provided)         | Description |
 |--------------|------------------|-----------------------------------|-------------|
 | **`xRange`** | `array[int,int]` | Determined automatically based on `difficulty` | Specifies the horizontal step size for applying noise. The first value is the minimum step, and the second is the maximum step. Smaller steps result in denser noise horizontally. |
 | **`yRange`** | `array[int,int]` | Determined automatically based on `difficulty` | Specifies the vertical step size for applying noise. The first value is the minimum step, and the second is the maximum step. Smaller steps result in denser noise vertically. |
@@ -75,6 +118,8 @@ Require this package with composer:
 ```
 composer require hpd/captcha
 ```
+⚠️It is recommended to install the latest version of this package.
+
 ## Usage
 
 It doesn't need to add CaptchaServiceProvider to the providers array in config/app.php.
@@ -86,7 +131,7 @@ To use your own settings, first publish the config file:
 
 
 ```bash
-php artisan vendor:publish --tag=captcha-config
+php artisan vendor:publish --tag=hpd-captcha-config
 ```
 Then customize configuration properties as you like.
 
@@ -115,6 +160,16 @@ return [
     ...
 ];
 ```
+### Optional Words File Publishing (version >=3.0.)
+
+The package comes with a built-in words file (resources/data/words_en.php) used for CAPTCHA generation, so it works immediately without any setup.
+
+If you want to customize the words list, you can publish it to your application:
+
+```bash
+php artisan vendor:publish --tag=hpd-captcha-words
+```
+
 ### Properties
 The following properties are customizable from published config.php file.
 ```php
@@ -152,15 +207,15 @@ The captcha solution is stored in the server-side session and validated against 
 
 You can use the following helper functions in your project to get a Captcha image.
 ```php
-    captcha()// returns image
+    captcha(); // returns image
     
     captcha_get_src()// returns image source(URl)
 
-    captcha_get_img()// returns img html element
+    captcha_get_html()// returns img html element
 ```
 Pass the configuration name to the function. If omitted, the 'default' configuration is
 ```php
-    captcha('default')// returns image
+    captcha('default'); // returns image
     
     captcha_get_src('easy')// returns image source(URl)
 
@@ -170,11 +225,11 @@ Pass the configuration name to the function. If omitted, the 'default' configura
 
 Get Captcha image src:
 ```php
-    <img src="{{captcha_get_src()}}" title="Captcha" alt="Captcha">
+    <img src="{{!! captcha_get_src()!!}}" titile="Captcha" alt="Captcha">
 ```
 Get img element:
 ```php
-    <div> {!!captcha_get_img()!!}</div>
+    <div> {{!! captcha_get_img()!!}}</div>
 ```
 Validation
 
@@ -208,7 +263,7 @@ Instead of sessions, the captcha state is temporarily stored in the cache. A cap
 ```js
         async function loadCaptcha(config='default') {
         try {
-        const response = await fetch(`/captcha/api/${config}`);
+        const response = await fetch(`hpd/captcha/api/${config}`);
         const data = await response.json();
     
         const img = document.createElement("img");
@@ -243,19 +298,9 @@ Validation
 ```
 ## License
 
-This project is licensed under the [Proprietary License](./LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
 
-## Donate
 
-If you like this project and want to support it, feel free to send USDT donations to the addresses below. Thank you! 🙏
-
-![Tether](https://img.shields.io/badge/Tether-blue?logo=tether&logoColor=white)
-| Network | Address |
-|---------|---------|
-| ![Tether ERC20](https://img.shields.io/badge/USDT-ERC20-green?logo=tether) | `0x2bFcEcCF2f25d48CbdC05a9d55A46262a0A6E542` | 
-| ![Tether TRC20](https://img.shields.io/badge/USTD-TRC20-red?logo=tether)    | `TEHzXzg4nMp7MW5pVH6fGmuq7JBaFovMW3` | 
-
-Your support allows me to continue maintaining and improving this project. Thank you so much for your contribution! 🙏
 
 ## Check Out My Other Projects
 

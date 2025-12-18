@@ -10,3 +10,7 @@ phpunit.xml export-ignore
 
 # (اختیاری) Ignore CI configs in export
 /.github/ export-ignore
+
+README.md export-ignore
+/docs export-ignore
+

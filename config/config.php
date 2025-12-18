@@ -27,14 +27,15 @@ return [
         'bgColor' => '#FFFFFF',
         'color' => 'random',
         'blur' => true,
-        'alpha' => 25,
+        'alpha' => 35,
     ],
     'easyDark' => [
         'length' => 5,
         'bgColor' => '#000000',
         'color' => 'random',
         'blur' => true,
-        'alpha' => 25,
+        'alpha' => 35,
+
     ],
     'light' => [
         'bgColor' => '#FFFFFF',
@@ -101,5 +102,32 @@ return [
         'blur' => true,
         'alpha' => 5,
         'fontSize' => 20,
-    ]
+    ],
+    'word_puzzle_default' => [
+        'type' => 'word_puzzle',
+        'bgColor' => '#FFFFFF',
+        'color' => '#000000',
+        'noise' => true,
+        'noiseColor' => '#FFFFFF',
+        'noiseMode' => 'horizontal',
+        'noiseLines' => true,
+        'blur' => true,
+        'alpha' => 5,
+        'fontSize' => 20,
+        'sensitive' => false, 
+    ],
+        'word_puzzle_easy' => [
+        'type' => 'word_puzzle',
+        'bgColor' => '#FFFFFF',
+        'color' => '#000000',
+        'noise' => true,
+        'noiseColor' => '#FFFFFF',
+        'noiseMode' => 'horizontal',
+        'alpha' => 5,
+        'fontSize' => 20,
+        'sensitive' => false, 
+    ],
+    /* 
+           Add your custom profiles
+    */    
 ];

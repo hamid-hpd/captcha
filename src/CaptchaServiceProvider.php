@@ -1,4 +1,5 @@
 <?php
+
 namespace Hpd\Captcha;
 
 use Illuminate\Support\ServiceProvider;
@@ -8,17 +9,21 @@ class CaptchaServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        // Load helper file
         $file = realpath(__DIR__.'/helper.php');
         if ($file && file_exists($file)) {
             require_once($file);
         }
-          
-        $this->mergeConfigFrom(
-            realpath(__DIR__.'/../config/config.php'),
-            'captcha'
-        );
 
-        $this->app->singleton('captcha', function($app) {
+        /**
+         * Merge default config
+         * (This only loads package defaults — does NOT override published config.)
+         */
+        $this->mergeConfigFrom(
+             realpath(__DIR__.'/../config/config.php'),
+            'hpd_captcha'
+        );
+                $this->app->singleton('captcha', function($app) {
             return new Captcha(
                 $app['Illuminate\Contracts\Config\Repository'],
                 $app['Illuminate\Support\Str'],
@@ -29,13 +34,30 @@ class CaptchaServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        /**
+         * Publish main config
+         */
         $this->publishes([
-            realpath(__DIR__.'/../config/config.php') => config_path('captcha.php'),
-        ], 'captcha-config');
+            realPath(__DIR__ . '/../config/config.php') => config_path('hpd_captcha.php'),
+        ], 'hpd-captcha-config');
 
+
+        /**
+         * Publish words file (5000+ words)
+         * Location: storage/app/hpd/captcha/
+         */
+        $this->publishes([
+            realPath(__DIR__ . '/../resources/data/words_en.php') => storage_path('app/hpd/captcha/words_en.php'),
+        ], 'hpd-captcha-words');
+
+
+        /**
+         * Load routes
+         */
         $this->loadRoutesFrom(realpath(__DIR__ . '/../routes/routes.php'));
 
-        Validator::extend('captcha', function($attribute, $value, $parameters, $validator) {
+
+       Validator::extend('captcha', function($attribute, $value, $parameters, $validator) {
             if ($value === null || $value === false || $value === "" || strlen($value) > 100) {
                 return false;
             }

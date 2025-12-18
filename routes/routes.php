@@ -1,12 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['web'])->group(function () {
-    Route::get('captcha/{config?}', '\Hpd\Captcha\CaptchaController@getCaptcha')
-        ->where('config', '[a-zA-Z0-9_-]+');
-});
+Route::prefix('hpd')->group(function () {
 
-Route::middleware(['api'])->group(function () {
-    Route::get('captcha/api/{config?}', '\Hpd\Captcha\CaptchaController@getCaptchaApi')
+    //  Web Route
+    Route::get('captcha/{config?}', '\Hpd\Captcha\CaptchaController@getCaptcha')
+        ->middleware('web')
         ->where('config', '[a-zA-Z0-9_-]+');
+
+    // ApI Route
+    Route::get('captcha/api/{config?}', '\Hpd\Captcha\CaptchaController@getCaptchaApi')
+        ->middleware('api')
+        ->where('config', '[a-zA-Z0-9_-]+');
+
 });

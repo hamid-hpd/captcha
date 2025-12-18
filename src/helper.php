@@ -16,6 +16,7 @@ if (!function_exists('captcha_get_src')) {
             throw new \InvalidArgumentException('Invalid CAPTCHA configuration');
         }
         return app('captcha')->captchaGetSrc($config);
+        
     }
 }
 
