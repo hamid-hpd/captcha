@@ -1,34 +1,34 @@
 {
-    "name": "hpd/captcha",
-    "description": "Laravel Captcha Code Package",
-    "homepage": "https://github.com/hamid-hpd/captcha.git",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Hamid HpD",
-            "homepage": "https://github.com/hamid-hpd",
-            "role": "Developer"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "ext-gd": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Hpd\\Captcha\\": "src/"
-        },
-        "files": [
-            "src/helper.php"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Hpd\\Captcha\\CaptchaServiceProvider"
-            ]
-        }
+  "name": "hpd/captcha",
+  "description": "Laravel Captcha Code Package",
+  "homepage": "https://github.com/hamid-hpd/captcha.git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hamid HpD",
+      "homepage": "https://github.com/hamid-hpd",
+      "role": "Developer"
     }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+    "ext-gd": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hpd\\Captcha\\": "src/"
+    },
+    "files": [
+      "src/helper.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Hpd\\Captcha\\CaptchaServiceProvider"
+      ]
+    }
+  }
 }

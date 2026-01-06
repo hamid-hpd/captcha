@@ -2,17 +2,14 @@
 
 _A Lightweight CAPTCHA Solution for Laravel_
 
-**By** _HPD Code Solutions_
-
-![Logo](./docs/images/logo.png)
+Maintained by [Hamid HpD](https://github.com/hamid-hpd)
 
 ## Preview
 ![Preview](./docs/images/preview.png)
 
 ## Table of Contents
-- [What's New](#whats-new)
-  - [Version 3.0.0](#version-300)
-  - [Version 2.0.0](#version-200)
+- [Introduction](#introduction)
+  - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
@@ -22,103 +19,50 @@ _A Lightweight CAPTCHA Solution for Laravel_
     - [Example](#example)
   - [API mode](#api-mode)
     - [Example](#example-1)
+- [What's New](#whats-new)
+  - [Version 3.0.0](#version-300)
+  - [Changelog](#changelog)
+
 - [License](#license)   
 - [Other Proiects](#check-out-my-other-projects) 
 
-## What's New
+## Introduction
+🛡️ HPD Captcha — Simple, Secure & Laravel Friendly
+- A lightweight, privacy-friendly CAPTCHA package for Laravel — no external services, no API keys, no tracking.
 
-### Version 3.0.0 
+### ✨ Features
 
-- **Added `word_puzzle` type configuration option**
+✅ Works fully offline (no external API)
 
-    Now you can generate captcha challenges using incomplete English words from a dictionary. Users see a word with missing letters (e.g., ap_le) and must type the complete word (apple).
-    ```php
-    <div> {!!captcha_get_img('word_puzzle_default')!!}</div>
-    ```
-- **From now on, the `color` property in all types supports the `multi` option.**
+✅ Simple image-based CAPTCHA
 
-- **⚠️ Updated Routes with `hpd` Prefix**
+✅ Easy integration with Laravel forms
 
-     All captcha routes have been updated to include a hpd prefix for better organization and avoiding naming conflicts with other CAPTCHA packages.
-     - Web routes now use:
-        ```arduino
-        hpd/captcha/{config?}
-        ```
-     - API routes now use:
-        ```php
-        hpd/captcha/api/{config?}
-        ```   
+✅ Supports Laravel 8.x → 12.x
 
-- **All published config files use the `hpd_` prefix to:**
-    - **Avoid conflicts** with other CAPTCHA packages
-    - **Unique identification** for HPD Captcha package
-    - **Easy management** in projects with multiple packages
+✅ Customizable appearance & difficulty
 
-    | Package File |    Published As   |      Purpose     |
-    |--------------|-------------------|------------------|
-    | `config.php` | `hpd_captcha.php` | Main CAPTCHA settings & themes |
-    
- - **All data files, such as the words file, will be placed in the address `storage\hpd\captcha\words_en.php` after publishing.**
+✅ No tracking, no cookies, no external requests
 
-- **Smart detection of published vs. package config and data files with seamless fallback.**
+✅ Lightweight & fast
 
-- **Refactored package directories structure** 
-
-### version 2.0.0 
-
-- **Added `math` type configuration option**  
-  Now you can generate captcha challenges using simple math operations (e.g., `3 + 5 = ?`).  
-
-- **Updated configuration options**  
-  Existing configs have been optimized for better performance and easier customization.  
-
-- **Refactored code structure**  
-  The internal codebase has been restructured to improve security, readability, and maintainability.  
-
-- **Bug fixes**  
-  Several issues have been resolved to provide a smoother and more stable experience.  
-
-- **Noise Options**
-
-The `addNoise` method accepts two required arguments (`width` and `height`) and an optional associative array as the third argument to customize the noise effect.
-
-### Parameters
-
-| Option       | Type             | Default (if not provided)         | Description |
-|--------------|------------------|-----------------------------------|-------------|
-| **`xRange`** | `array[int,int]` | Determined automatically based on `difficulty` | Specifies the horizontal step size for applying noise. The first value is the minimum step, and the second is the maximum step. Smaller steps result in denser noise horizontally. |
-| **`yRange`** | `array[int,int]` | Determined automatically based on `difficulty` | Specifies the vertical step size for applying noise. The first value is the minimum step, and the second is the maximum step. Smaller steps result in denser noise vertically. |
-| **`mode`**   | `string`         | `'cross'`                        | Determines how the noise is applied: <br>• `'vertical'` → vertical lines of noise <br>• `'horizontal'` → horizontal lines of noise <br>• `'cross'` → both vertical and horizontal lines <br>• `'random'` → randomly scattered pixels |
-| **`density`** | `float`         | `0.1`                             | Used only when `mode` is `'random'`. Defines the fraction of total image pixels that will contain noise. Must be between `0.0` and `1.0`. |
-| **`intensity`** | `float`       | `1.0`                             | Multiplier for the color intensity of the noise. `1.0` means full brightness, `0.0` results in black. This can make the noise lighter or darker. |
 
 ---
 
-### Example Usage
+## ⚠️ Important Notice
 
-```php
-// 1. Default noise based on difficulty
-$this->addNoise(200, 100);
+> **Version 1.x of HPD Captcha is officially deprecated.**  
+> All new projects should use **v3.x**.  
+> Upgrading from v1/v2? Check the [Upgrade Guide](./UPGRADE.md).
 
-// 2. Only change mode
-$this->addNoise(200, 100, ['mode' => 'cross']);
+---
 
-// 3. Override xRange and yRange manually
-$this->addNoise(200, 100, [
-    'xRange'   => [2, 6],
-    'yRange'   => [3, 7],
-    'mode'     => 'horizontal',
-    'density'  => 0.4,//or $this->noiseDensity
-    'intensity'=> 0.7 //or $this->noiseIndensity
-]);
-```
 ## Installation
 
 Require this package with composer:
 ```
 composer require hpd/captcha
 ```
-⚠️It is recommended to install the latest version of this package.
 
 ## Usage
 
@@ -296,6 +240,49 @@ Validation
         // continue
     }
 ```
+## What's New
+
+### Version 3.0.0 
+
+- **Added `word_puzzle` type configuration option**
+
+    Now you can generate captcha challenges using incomplete English words from a dictionary. Users see a word with missing letters (e.g., ap_le) and must type the complete word (apple).
+    ```php
+    <div> {!!captcha_get_img('word_puzzle_default')!!}</div>
+    ```
+- **From now on, the `color` property in all types supports the `multi` option.**
+
+- **⚠️ Updated Routes with `hpd` Prefix**
+
+     All captcha routes have been updated to include a hpd prefix for better organization and avoiding naming conflicts with other CAPTCHA packages.
+     - Web routes now use:
+        ```arduino
+        hpd/captcha/{config?}
+        ```
+     - API routes now use:
+        ```php
+        hpd/captcha/api/{config?}
+        ```   
+
+- **All published config files use the `hpd_` prefix to:**
+    - **Avoid conflicts** with other CAPTCHA packages
+    - **Unique identification** for HPD Captcha package
+    - **Easy management** in projects with multiple packages
+
+    | Package File |    Published As   |      Purpose     |
+    |--------------|-------------------|------------------|
+    | `config.php` | `hpd_captcha.php` | Main CAPTCHA settings & themes |
+    
+ - **All data files, such as the words file, will be placed in the address `storage\hpd\captcha\words_en.php` after publishing.**
+
+- **Smart detection of published vs. package config and data files with seamless fallback.**
+
+- **Refactored package directories structure** 
+
+### Changelog 
+
+Checkout the [CHANGELOG](./CHANGELOG.md) for details on updates.
+
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
