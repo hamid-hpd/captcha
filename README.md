@@ -38,7 +38,7 @@ Maintained by [Hamid HpD](https://github.com/hamid-hpd)
 
 ✅ Easy integration with Laravel forms
 
-✅ Supports Laravel 8.x → 12.x
+✅ Supports Laravel 8.x → 13.x
 
 ✅ Customizable appearance & difficulty
 
