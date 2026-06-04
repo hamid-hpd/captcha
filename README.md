@@ -169,12 +169,16 @@ Pass the configuration name to the function. If omitted, the 'default' configura
 
 Get Captcha image src:
 ```php
-    <img src="{{!! captcha_get_src()!!}}" titile="Captcha" alt="Captcha">
+    <img src="{{ captcha_get_src() }}" title="Captcha" alt="Captcha">
 ```
 Get img element:
 ```php
-    <div> {{!! captcha_get_img()!!}}</div>
+    <div> {!! captcha_get_img()!!}</div>
 ```
+> [!NOTE]
+> `captcha_get_img()` returns a complete HTML `<img>` element.
+> Use Blade raw echo syntax `{!! !!}` to render it correctly.
+
 Validation
 
 ```php
@@ -248,7 +252,7 @@ Validation
 
     Now you can generate captcha challenges using incomplete English words from a dictionary. Users see a word with missing letters (e.g., ap_le) and must type the complete word (apple).
     ```php
-    <div> {!!captcha_get_img('word_puzzle_default')!!}</div>
+    <div> {!! captcha_get_img('word_puzzle_default') !!}</div>
     ```
 - **From now on, the `color` property in all types supports the `multi` option.**
 
